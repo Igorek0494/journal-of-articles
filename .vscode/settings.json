@@ -5,5 +5,8 @@
   "scss.validate": false,
   "stylelint.enable": true,
   "stylelint.validate": ["css", "scss"],
-  "stylelint.config": null
+  "stylelint.config": null,
+  "files.autoSave": "afterDelay",
+  "screencastMode.keyboardShortcutsFormat": "keys",
+  "i18n-ally.keystyle": "nested"
 }
