@@ -1,16 +1,16 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Theme } from "app/providers/ThemeProvider";
-import { Country } from "entities/Country";
-import { Currency } from "entities/Currency";
-import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
-import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import ProfilePage from "./ProfilePage";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Theme } from 'app/providers/ThemeProvider';
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import ProfilePage from './ProfilePage';
 
 export default {
-  title: "pages/ProfilePage",
+  title: 'pages/ProfilePage',
   component: ProfilePage,
   argTypes: {
-    backgroundColor: { control: "color" },
+    backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof ProfilePage>;
 
@@ -22,12 +22,12 @@ Normal.decorators = [
   StoreDecorator({
     profile: {
       form: {
-        username: "admin",
+        username: 'admin',
         age: 22,
         country: Country.Ukraine,
-        lastname: "Kiselev",
-        first: "Igor",
-        city: "Moscow",
+        lastname: 'Kiselev',
+        first: 'Igor',
+        city: 'Moscow',
         currency: Currency.RUB,
       },
     },
@@ -41,12 +41,12 @@ Dark.decorators = [
   StoreDecorator({
     profile: {
       form: {
-        username: "admin",
+        username: 'admin',
         age: 22,
         country: Country.Ukraine,
-        lastname: "Kiselev",
-        first: "Igor",
-        city: "Moscow",
+        lastname: 'Kiselev',
+        first: 'Igor',
+        city: 'Moscow',
         currency: Currency.RUB,
       },
     },

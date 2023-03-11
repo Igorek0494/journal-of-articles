@@ -1,15 +1,15 @@
-import { memo, useState } from "react";
-import { ThemeSwitcher } from "shared";
-import { classNames } from "shared/lib/classNames/classNames";
-import { LangSwitcher } from "shared/ui/LangSwitcher/LangSwitcher";
+import { memo, useState } from 'react';
+import { ThemeSwitcher } from 'shared';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher';
+import { SidebarItemsList } from 'widgets/Sidebar/model/items';
 import {
   Button,
   ButtonSize,
   ButtonTheme,
-} from "../../../../shared/ui/Button/Button";
-import cls from "./Sidebar.module.scss";
-import { SidebarItemsList } from "widgets/Sidebar/model/items";
-import { SidebarItem } from "../SidebarItem/SidebarItem";
+} from '../../../../shared/ui/Button/Button';
+import cls from './Sidebar.module.scss';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SidebarProps {
   className?: string;
@@ -37,7 +37,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         size={ButtonSize.L}
         square
       >
-        {collapsed ? ">" : "<"}
+        {collapsed ? '>' : '<'}
       </Button>
       <div className={cls.items}>
         {SidebarItemsList.map((item) => (

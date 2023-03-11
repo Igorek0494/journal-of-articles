@@ -1,15 +1,15 @@
-import { classNames, Mods } from "shared/lib/classNames/classNames";
-import { useTranslation } from "react-i18next";
-import { Input } from "shared/ui/Input/Input";
-import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
-import cls from "./ProfileCard.module.scss";
-import { Profile } from "../../model/types/profile";
-import { Avatar } from "shared/ui/Avatar/Avatar";
-import { Select } from "shared/ui/Select/Select";
-import { Currency } from "entities/Currency/model/types/currency";
-import { CurrencySelect } from "entities/Currency";
-import { Country } from "entities/Country/model/types/country";
-import { CountrySelect } from "entities/Country";
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
+import { Input } from 'shared/ui/Input/Input';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
+import { Currency } from 'entities/Currency/model/types/currency';
+import { CurrencySelect } from 'entities/Currency';
+import { Country } from 'entities/Country/model/types/country';
+import { CountrySelect } from 'entities/Country';
+import { Loader } from 'shared/ui/Loader/Loader';
+import { Profile } from '../../model/types/profile';
+import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
   className?: string;
@@ -43,7 +43,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     onChangeCountry,
     onChangeCurrency,
   } = props;
-  const { t } = useTranslation("profile");
+  const { t } = useTranslation('profile');
 
   if (isLoading) {
     return (
@@ -52,7 +52,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
           className,
         ])}
       >
-        {/* <Loader /> */}
+        <Loader />
       </div>
     );
   }
@@ -62,8 +62,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
       <div className={classNames(cls.ProfileCard, {}, [className, cls.error])}>
         <Text
           theme={TextTheme.ERROR}
-          title={t("Произошла ошибка при загрузке профиля")}
-          text={t("Попробуйте обновить страницу")}
+          title={t('Произошла ошибка при загрузке профиля')}
+          text={t('Попробуйте обновить страницу')}
           align={TextAlign.CENTER}
         />
       </div>
@@ -79,27 +79,27 @@ export const ProfileCard = (props: ProfileCardProps) => {
       <div className={cls.data}>
         {data?.avatar && (
           <div className={cls.avatarWrapper}>
-            {" "}
+            {' '}
             <Avatar src={data?.avatar} />
           </div>
         )}
         <Input
           value={data?.first}
-          placeholder={t("Ваше имя")}
+          placeholder={t('Ваше имя')}
           className={cls.input}
           onChange={onChangeFirstname}
           readonly={readonly}
         />
         <Input
           value={data?.lastname}
-          placeholder={t("Ваша фамилия")}
+          placeholder={t('Ваша фамилия')}
           className={cls.input}
           onChange={onChangeLastname}
           readonly={readonly}
         />
         <Input
           value={data?.age}
-          placeholder={t("Ваш возраст")}
+          placeholder={t('Ваш возраст')}
           className={cls.input}
           onChange={onChangeAge}
           readonly={readonly}
@@ -111,21 +111,21 @@ export const ProfileCard = (props: ProfileCardProps) => {
         />
         <Input
           value={data?.city}
-          placeholder={t("Город")}
+          placeholder={t('Город')}
           className={cls.input}
           onChange={onChangeCity}
           readonly={readonly}
         />
         <Input
           value={data?.username}
-          placeholder={t("Введите имя пользователя")}
+          placeholder={t('Введите имя пользователя')}
           className={cls.input}
           onChange={onChangeUsername}
           readonly={readonly}
         />
         <Input
           value={data?.avatar}
-          placeholder={t("Введите ссылку на аватар")}
+          placeholder={t('Введите ссылку на аватар')}
           className={cls.input}
           onChange={onChangeAvatar}
           readonly={readonly}
@@ -141,7 +141,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
           value={data?.country}
           onChange={onChangeCountry}
           readonly={readonly}
-        />
+         />
       </div>
     </div>
   );

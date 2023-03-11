@@ -1,11 +1,10 @@
 import {
   ThunkConfig,
-  ThunkExtraArg,
-} from "app/providers/StoreProvider/config/StateSchema";
-import { USER_LOCALSTORAGE_KEY } from "shared/const/localStorage";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { User, userActions } from "entities/User";
-import i18n from "shared/config/i18n/i18n";
+} from 'app/providers/StoreProvider/config/StateSchema';
+import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { User, userActions } from 'entities/User';
+import i18n from 'shared/config/i18n/i18n';
 
 interface LoginByUsernameProps {
   username: string;
@@ -16,10 +15,10 @@ export const loginByUsername = createAsyncThunk<
   User,
   LoginByUsernameProps,
   ThunkConfig<string>
->("login/loginByUsername", async ({ username, password }, thunkApi) => {
+>('login/loginByUsername', async ({ username, password }, thunkApi) => {
   const { dispatch, extra, rejectWithValue } = thunkApi;
   try {
-    const response = await extra.api.post<User>("/login", {
+    const response = await extra.api.post<User>('/login', {
       username,
       password,
     });
@@ -34,6 +33,6 @@ export const loginByUsername = createAsyncThunk<
     return response.data;
   } catch (e) {
     console.log(e);
-    return rejectWithValue(i18n.t("error"));
+    return rejectWithValue(i18n.t('error'));
   }
 });

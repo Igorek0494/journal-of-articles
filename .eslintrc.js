@@ -11,13 +11,11 @@ module.exports = {
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ["./tsconfig.json"],
-        ecmaVersion: "latest",
         ecmaFeatures: {
             jsx: true,
         },
-        sourceType: "module",
+        ecmaVersion: 'latest',
+        sourceType: 'module',
     },
     plugins: [
         'react',
@@ -26,10 +24,10 @@ module.exports = {
         'react-hooks',
     ],
     rules: {
-        'react/jsx-indent': [4, 4],
-        'react/jsx-indent-props': [4, 4],
-        'indent': [4, 4],
-        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
+        'react/jsx-indent': [0, 4],
+        'react/jsx-indent-props': [0, 4],
+        indent: [0, 4],
+        'react/jsx-filename-extension': [0, { extensions: ['.js', '.jsx', '.tsx'] }],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
         'no-unused-vars': 'warn',
@@ -42,13 +40,14 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] }],
-        'max-len': ['error', { ignoreComments: true, code: 120 }],
+        'max-len': ['error', { ignoreComments: true, code: 130 }],
         'jsx-a11y/no-static-element-interactions': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "error",
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
         'no-undef': 'off',
+        'react/prop-types': 'off',
     },
     globals: {
         __IS_DEV__: true,
@@ -61,7 +60,7 @@ module.exports = {
             rules: {
                 'i18next/no-literal-string': 'off',
                 'max-len': 'off',
-            }
-        }
-    ]
+            },
+        },
+    ],
 };

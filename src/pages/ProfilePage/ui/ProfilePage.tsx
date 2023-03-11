@@ -1,30 +1,28 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import { memo, useCallback, useEffect } from "react";
+import { classNames } from 'shared/lib/classNames/classNames';
+import { memo, useCallback, useEffect } from 'react';
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
   fetchProfileData,
   getProfileForm,
   getProfileReadonly,
   getProfileValidateErrors,
-  Profile,
   profileActions,
   ProfileCard,
   profileReducer,
   ValidateProfileError,
-} from "entities/Profile";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { getProfileData } from "entities/Profile/model/selectors/getProfileData/getProfileData";
-import { useSelector } from "react-redux";
-import { getProfileError } from "entities/Profile/model/selectors/getProfileError/getProfileError";
-import { getProfileIsLoading } from "entities/Profile/model/selectors/getProfileIsLoading/getProfileIsLoading";
-import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
-import { Currency } from "entities/Currency";
-import { Country } from "entities/Country";
-import { Text, TextTheme } from "shared/ui/Text/Text";
-import { useTranslation } from "react-i18next";
+} from 'entities/Profile';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useSelector } from 'react-redux';
+import { getProfileError } from 'entities/Profile/model/selectors/getProfileError/getProfileError';
+import { getProfileIsLoading } from 'entities/Profile/model/selectors/getProfileIsLoading/getProfileIsLoading';
+import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { useTranslation } from 'react-i18next';
+import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -35,7 +33,7 @@ interface ProfilePageProps {
 }
 
 const ProfilePage = memo(({ className }: ProfilePageProps) => {
-  const { t } = useTranslation("profile");
+  const { t } = useTranslation('profile');
   const dispatch = useAppDispatch();
   const formData = useSelector(getProfileForm);
   const error = useSelector(getProfileError);
@@ -44,81 +42,81 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
   const validateErrors = useSelector(getProfileValidateErrors);
 
   const validateErrorTranslates = {
-    [ValidateProfileError.SERVER_ERROR]: t("Серверная ошибка при сохранении"),
-    [ValidateProfileError.INCORRECT_AGE]: t("Некорректный возраст"),
-    [ValidateProfileError.NO_DATA]: t("Данные не указаны"),
-    [ValidateProfileError.INCORRECT_COUNTRY]: t("Некорректная страна"),
-    [ValidateProfileError.INCORRECT_USER_DATA]: t("Имя и фамилия обязательны"),
+    [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
+    [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
+    [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
+    [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректная страна'),
+    [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
   };
 
   useEffect(() => {
-    if (__PROJECT__ !== "storybook") {
+    if (__PROJECT__ !== 'storybook') {
       dispatch(fetchProfileData());
     }
   }, [dispatch]);
 
   const onChangeFirstname = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ first: value || "" }));
+      dispatch(profileActions.updateProfile({ first: value || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const onChangeLastname = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ lastname: value || "" }));
+      dispatch(profileActions.updateProfile({ lastname: value || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const onChangeCity = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ city: value || "" }));
+      dispatch(profileActions.updateProfile({ city: value || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const onChangeAge = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ age: Number(value || 0) }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const onChangeUsername = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ username: value || "" }));
+      dispatch(profileActions.updateProfile({ username: value || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const onChangeAvatar = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ avatar: value || "" }));
+      dispatch(profileActions.updateProfile({ avatar: value || '' }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const onChangeCurrency = useCallback(
     (currency: Currency) => {
       dispatch(profileActions.updateProfile({ currency }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   const onChangeCountry = useCallback(
     (country: Country) => {
       dispatch(profileActions.updateProfile({ country }));
     },
-    [dispatch]
+    [dispatch],
   );
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames("", {}, [className])}>
+      <div className={classNames('', {}, [className])}>
         <ProfilePageHeader />
-        {validateErrors?.length &&
-          validateErrors.map((err) => (
+        {validateErrors?.length
+          && validateErrors.map((err) => (
             <Text
               key={err}
               theme={TextTheme.ERROR}
@@ -140,7 +138,6 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
           onChangeCountry={onChangeCountry}
         />
       </div>
-      ;
     </DynamicModuleLoader>
   );
 });

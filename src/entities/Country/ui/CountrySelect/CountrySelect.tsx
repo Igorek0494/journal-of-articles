@@ -1,8 +1,8 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import { useTranslation } from "react-i18next";
-import { Select } from "shared/ui/Select/Select";
-import { memo, useCallback } from "react";
-import { Country } from "entities/Country/model/types/country";
+import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
+import { Select } from 'shared/ui/Select/Select';
+import { memo, useCallback } from 'react';
+import { Country } from 'entities/Country/model/types/country';
 
 interface CountrySelectProps {
   className?: string;
@@ -20,25 +20,27 @@ const options = [
 ];
 
 export const CountrySelect = memo(
-  ({ className, value, onChange, readonly }: CountrySelectProps) => {
+  ({
+ className, value, onChange, readonly,
+}: CountrySelectProps) => {
     const { t } = useTranslation();
 
     const onChangeHandler = useCallback(
       (value: string) => {
         onChange?.(value as Country);
       },
-      [onChange]
+      [onChange],
     );
 
     return (
       <Select
-        className={classNames("", {}, [className])}
-        label={t("Укажите страну")}
+        className={classNames('', {}, [className])}
+        label={t('Укажите страну')}
         options={options}
         value={value}
         onChange={onChangeHandler}
         readonly={readonly}
       />
     );
-  }
+  },
 );

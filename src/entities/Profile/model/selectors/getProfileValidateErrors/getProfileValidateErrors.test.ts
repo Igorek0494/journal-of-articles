@@ -1,9 +1,9 @@
-import { StateSchema } from "app/providers/StoreProvider";
-import { ValidateProfileError } from "../../types/profile";
-import { getProfileValidateErrors } from "./getProfileValidateErrors";
+import { StateSchema } from 'app/providers/StoreProvider';
+import { ValidateProfileError } from '../../types/profile';
+import { getProfileValidateErrors } from './getProfileValidateErrors';
 
-describe("getProfileValidateErrors.test", () => {
-  test("should work with fulled state", () => {
+describe('getProfileValidateErrors.test', () => {
+  test('should work with fulled state', () => {
     const state: DeepPartial<StateSchema> = {
       profile: {
         validateErrors: [
@@ -18,7 +18,7 @@ describe("getProfileValidateErrors.test", () => {
     ]);
   });
 
-  test("should work with empty state", () => {
+  test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {};
     expect(getProfileValidateErrors(state as StateSchema)).toEqual(undefined);
   });

@@ -1,17 +1,17 @@
-import { StateSchema } from "app/providers/StoreProvider";
-import { Country } from "entities/Country";
-import { Currency } from "entities/Currency";
-import { getProfileForm } from "./getProfileForm";
+import { StateSchema } from 'app/providers/StoreProvider';
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
+import { getProfileForm } from './getProfileForm';
 
-describe("getProfileForm.test", () => {
-  test("should return error", () => {
+describe('getProfileForm.test', () => {
+  test('should return error', () => {
     const data = {
-      username: "admin",
+      username: 'admin',
       age: 22,
       country: Country.Ukraine,
-      lastname: "Kiselev",
-      first: "Igor",
-      city: "Moscow",
+      lastname: 'Kiselev',
+      first: 'Igor',
+      city: 'Moscow',
       currency: Currency.RUB,
     };
 
@@ -23,7 +23,7 @@ describe("getProfileForm.test", () => {
     expect(getProfileForm(state as StateSchema)).toEqual(data);
   });
 
-  test("should work with empty state", () => {
+  test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {};
     expect(getProfileForm(state as StateSchema)).toEqual(undefined);
   });

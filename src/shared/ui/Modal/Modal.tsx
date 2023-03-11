@@ -1,5 +1,4 @@
-import { useTheme } from "app/providers/ThemeProvider";
-import { on } from "events";
+import { useTheme } from 'app/providers/ThemeProvider';
 import {
   MutableRefObject,
   ReactNode,
@@ -7,10 +6,10 @@ import {
   useEffect,
   useRef,
   useState,
-} from "react";
-import { classNames, Mods } from "shared/lib/classNames/classNames";
-import { Portal } from "../Portal/Portal";
-import cls from "./Modal.module.scss";
+} from 'react';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { Portal } from '../Portal/Portal';
+import cls from './Modal.module.scss';
 
 interface ModalProps {
   className?: string;
@@ -23,7 +22,9 @@ interface ModalProps {
 const ANIMATION_DELAY = 300;
 
 export const Modal = (props: ModalProps) => {
-  const { className, children, isOpen, onClose, lazy } = props;
+  const {
+ className, children, isOpen, onClose, lazy,
+} = props;
 
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -48,11 +49,11 @@ export const Modal = (props: ModalProps) => {
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         closeHandler();
       }
     },
-    [closeHandler]
+    [closeHandler],
   );
 
   const onContentClick = (e: React.MouseEvent) => {
@@ -61,11 +62,11 @@ export const Modal = (props: ModalProps) => {
 
   useEffect(() => {
     if (isOpen) {
-      window.addEventListener("keydown", onKeyDown);
+      window.addEventListener('keydown', onKeyDown);
     }
     return () => {
       clearTimeout(timerRef.current);
-      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen, onKeyDown]);
 
@@ -81,7 +82,7 @@ export const Modal = (props: ModalProps) => {
   return (
     <Portal>
       <div
-        className={classNames(cls.Modal, mods, [className, theme, "app_modal"])}
+        className={classNames(cls.Modal, mods, [className, theme, 'app_modal'])}
       >
         <div className={cls.overlay} onClick={closeHandler}>
           <div className={cls.content} onClick={onContentClick}>
