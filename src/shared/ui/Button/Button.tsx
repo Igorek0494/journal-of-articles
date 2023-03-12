@@ -1,5 +1,5 @@
 import {
- ButtonHTMLAttributes, FC, memo, ReactNode,
+ ButtonHTMLAttributes, FC, memo, ReactNode, Suspense,
 } from 'react';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
@@ -44,6 +44,7 @@ export const Button: FC<ButtonProps> = memo((props) => {
     [cls.disabled]: disabled,
   };
   return (
+    <Suspense fallback="">
     <button
       type="button"
       disabled={disabled}
@@ -52,5 +53,6 @@ export const Button: FC<ButtonProps> = memo((props) => {
     >
       {children}
     </button>
+    </Suspense>
   );
 });

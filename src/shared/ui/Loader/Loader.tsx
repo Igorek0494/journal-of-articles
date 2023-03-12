@@ -8,8 +8,5 @@ interface LoaderProps {
 export const Loader = ({ className }: LoaderProps) => (
     <div className={classNames('lds-ellipsis', {}, [className])}>
       <div />
-      <div />
-      <div />
-      <div />
     </div>
   );

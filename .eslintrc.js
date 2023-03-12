@@ -5,6 +5,7 @@ module.exports = {
         jest: true,
     },
     extends: [
+        'plugin:jsx-a11y/recommended',
         'plugin:react/recommended',
         'airbnb',
         'plugin:i18next/recommended',
@@ -18,6 +19,7 @@ module.exports = {
         sourceType: 'module',
     },
     plugins: [
+        'jsx-a11y',
         'react',
         '@typescript-eslint',
         'i18next',
@@ -30,6 +32,7 @@ module.exports = {
         'react/jsx-filename-extension': [0, { extensions: ['.js', '.jsx', '.tsx'] }],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
+        'jsx-a11y/rule-name': 0,
         'no-unused-vars': 'warn',
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',

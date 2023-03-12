@@ -3,7 +3,7 @@ import { Avatar } from './Avatar';
 import AvatarImg from './storybook.jpg';
 
 export default {
-  title: 'shared/AppLink',
+  title: 'shared/Avatar',
   component: Avatar,
   argTypes: {
     backgroundColor: { control: 'color' },

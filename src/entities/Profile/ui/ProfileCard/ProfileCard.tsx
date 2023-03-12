@@ -8,6 +8,7 @@ import { CurrencySelect } from 'entities/Currency';
 import { Country } from 'entities/Country/model/types/country';
 import { CountrySelect } from 'entities/Country';
 import { Loader } from 'shared/ui/Loader/Loader';
+import { Suspense } from 'react';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
@@ -52,7 +53,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
           className,
         ])}
       >
-        <Loader />
+       <Suspense fallback={<Loader />} />
       </div>
     );
   }
@@ -79,7 +80,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
       <div className={cls.data}>
         {data?.avatar && (
           <div className={cls.avatarWrapper}>
-            {' '}
             <Avatar src={data?.avatar} />
           </div>
         )}
